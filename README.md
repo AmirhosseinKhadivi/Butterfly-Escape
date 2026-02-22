@@ -1,80 +1,72 @@
-CAD Project (VGA Display Controller)
-Overview
+<h1 align="center">CAD Project (FPGA VGA Game)</h1>
 
-This project implements a VGA display controller using FPGA. It is designed to work with a 24 MHz clock signal, and it provides outputs to control the VGA's red, green, blue color channels, horizontal, and vertical synchronization signals. Additionally, it provides input for controlling keys, switches, LEDs, and 7-segment displays.
+<p align="center">
+  <b>VHDL-Based FPGA Game Project with VGA Graphics and Peripheral Control</b>
+</p>
 
-This project is based on the VHDL language and is intended for educational and practical use in FPGA-based systems.
+<hr />
 
-Features
+<h2>Overview</h2>
+<p>
+  This project implements an FPGA-based <b>VGA game system</b> written in <b>VHDL</b>.
+  It uses a <b>24 MHz clock</b> to generate VGA RGB signals and synchronization signals
+  (<code>HS</code>/<code>VS</code>). The design also supports interaction through
+  <b>keys</b> and <b>switches</b>, and provides output via <b>LEDs</b> and a
+  <b>7-segment display</b>.
+</p>
 
-VGA Display Controller: Provides color and sync signals for VGA display.
+<h2>Features</h2>
+<ul>
+  <li><b>VGA Graphics Output</b>: RGB + HS/VS signals for VGA display</li>
+  <li><b>Game Controls</b>: Input handling using keys and switches</li>
+  <li><b>LED Feedback</b>: Visual status output on onboard LEDs</li>
+  <li><b>7-Segment Display</b>: Displays useful values (score/state/debug)</li>
+</ul>
 
-Key & Switch Inputs: Allows interaction with the system via keys and switches.
+<h2>Hardware Requirements</h2>
+<ul>
+  <li>FPGA development board (Intel/Altera or Xilinx)</li>
+  <li>VGA monitor + cable</li>
+  <li>Keys, switches, LEDs (usually onboard)</li>
+  <li>7-segment display (onboard or external)</li>
+  <li>24 MHz clock source</li>
+</ul>
 
-LED Control: Outputs to control LEDs based on user inputs.
+<h2>Software Requirements</h2>
+<ul>
+  <li>VHDL-compatible toolchain (Xilinx ISE)</li>
+  <li>Optional: simulator (ModelSim / Vivado Simulator)</li>
+</ul>
 
-7-Segment Display: Outputs for driving a 7-segment display for visual representation.
+<h2>Top-Level Module</h2>
+<p>
+  The main entity is <code>CAD</code> and includes ports for clock/reset, VGA output,
+  keys/switches input, LED output, and 7-segment display output.
+</p>
 
-Hardware Requirements
+<h2>How to Use</h2>
+<ol>
+  <li>Open the project in your FPGA tool (just ISE because the Board is spartan 6).</li>
+  <li>Assign pins based on your board’s VGA/LED/7-seg connections.</li>
+  <li>Compile / synthesize the design and program the FPGA.</li>
+  <li>Connect a VGA monitor and use keys/switches to play/control the game.</li>
+</ol>
 
-FPGA (e.g., Xilinx, Altera)
+<h2>Example (VGA Output Mapping)</h2>
+<pre><code class="language-vhdl">VGA_R  &lt;= VGA_R_port;
+VGA_G  &lt;= VGA_G_port;
+VGA_B  &lt;= VGA_B_port;
+VGA_HS &lt;= VGA_HS_port;
+VGA_VS &lt;= VGA_VS_port;</code></pre>
 
-VGA display
 
-7-segment display
+<h2>Contributors</h2>
+<ul>
+  <li><b>Amirhossein Khadivi</b></li>
+  <li><b>Behnam Moayedi</b></li>
+</ul>
 
-LEDs and switches
-
-24 MHz clock signal
-
-Software Requirements
-
-Xilinx Vivado or any VHDL-compatible simulator
-
-FPGA development board
-
-VHDL Components
-CAD Entity
-
-The main entity of the project is CAD. This entity has the following ports:
-
-CLOCK_24: 24 MHz clock input
-
-RESET_N: Active-low reset signal
-
-VGA_R, VGA_G, VGA_B: RGB color output for VGA display
-
-VGA_HS, VGA_VS: Horizontal and Vertical sync signals for VGA
-
-Key: 4-bit input for keys (used for interaction)
-
-SW: 8-bit input for switches
-
-Leds: 8-bit output for LEDs
-
-outseg: Output for 7-segment display segments
-
-sevensegments: 7-segment display output
-
-VGA Controller Component
-
-This component is responsible for controlling the VGA output based on the inputs and clock signals. It generates the necessary color and sync signals for displaying images on the screen.
-
-How to Use
-
-Setup FPGA: Load the VHDL code onto the FPGA development board.
-
-Connect VGA: Connect the VGA cable to the VGA output pins.
-
-Input Devices: Connect switches and keys for user input.
-
-LEDs: Connect LEDs to indicate various statuses.
-
-7-Segment Display: Connect a 7-segment display to visualize output values.
-
-Pin Assignment Example
-VGA_R <= VGA_R_port;
-VGA_G <= VGA_G_port;
-VGA_B <= VGA_B_port;
-VGA_HS <= VGA_HS_port;
-VGA_VS <= VGA_VS_port;
+<h2>License</h2>
+<p>
+  This project is licensed under the <b>MIT License</b>. See the <code>LICENSE</code> file for details.
+</p>
